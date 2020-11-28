@@ -1,6 +1,7 @@
 import socket
 from _thread import *
 from checkers.game import Game
+from checkers.board import Board
 import sys
 import pickle
 
@@ -28,26 +29,35 @@ def threaded_player(conn, p, gameID):
     reply = ""
 
     while True:
+        print("yes")
         try:
-            data = conn.recv(4096).decode()
+            data = pickle.loads(conn.recv(4096))
+            print(data)
             if gameID in games:
                 game = games[gameID]
 
                 if not data:
+                    print("here")
                     break
                 else:
+                    print("first")
                     if data == "reset":
                         game.reset()
                     elif data != "get":
                         pos = str.split(",")
                         game.select(int(pos[0]), int(pos[1]))
                         game.change_turn(p)
-
-                    reply = game
-                    conn.sendall(pickle.dumps(reply))
+                    
+                    print(game)
+                    print("helloooo")
+                    print(pickle.dumps(Game()))
+                    print("hi")
+                    conn.sendall(pickle.dumps(Game()))
             else:
+                print("here actually")
                 break
-        except:
+        except EOFError as e:
+            print(e)
             break
 
     print("Connection Stopped")

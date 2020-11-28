@@ -3,17 +3,34 @@ from checkers.board import Board
 
 
 class Game:
-
-    def __init__(self, id):
+    """
+    def __init__(self, id,board, turn):
         self.ready = False
         self.id = id
         self._init()
-
+        self.board = board
+        if turn:
+            p1_turn = True
+            p2_turn = False
+        else:
+            p2_turn = True
+            p1_turn = False
+    """
+    def __init__(self, id = 0):
+        self.ready = False
+        self.id = id
+        self._init()
+    """    
+    def __init__(self):
+        self.ready = False
+        #self.id = id
+        self._init()
+    """  
     def update(self):
         self.board.draw()
         self.board.draw_valid_moves(self.valid_moves)
         self.board.update()
-
+ 
     def _init(self):
         self.p1 = RED
         self.p2 = WHITE

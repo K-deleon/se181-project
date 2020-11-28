@@ -47,4 +47,5 @@ menu.add_button('Credits', show_credits)
 menu.add_button('Quit', pygame_menu.events.EXIT)
 
 if __name__ == '__main__':
+
     menu.mainloop(surface)

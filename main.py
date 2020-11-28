@@ -2,20 +2,18 @@ import pygame
 from network import Network
 from checkers.constants import *
 from checkers.board import *
-# from checkers.game import Game
+from checkers.game import Game
 
 FPS = 60
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('checkers')
 
-
 def get_row_col_from_mouse(pos):
     x, y = pos
     row = y // SQUARE_SIZE
     col = x // SQUARE_SIZE
     return row, col
-
 
 def run():
     run = True
@@ -29,17 +27,20 @@ def run():
         clock.tick(FPS)
 
         try:
+            print("before")
             game = n.send("get")
+            print("test")
         except:
             run = False
             print("Game could not be fetched")
             break
 
         # change winning text
-        if game.winner() is not None:
-            print(game.winner())
+       # if game.winner() is not None:
+        #    print(game.winner())
 
         for event in pygame.event.get():
+            print("test")
             if event.type == pygame.QUIT:
                 run = False
 
