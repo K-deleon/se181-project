@@ -2,8 +2,28 @@ import pygame
 from checkers.constants import *
 from checkers.board import Board
 class Game:
+<<<<<<< Updated upstream
     
     def __init__(self,win):
+=======
+    """
+    def __init__(self, id,board, turn):
+        self.ready = False
+        self.id = id
+        self._init()
+        self.board = board
+        if turn:
+            p1_turn = True
+            p2_turn = False
+        else:
+            p2_turn = True
+            p1_turn = False
+    """
+    def __init__(self, win,id = 0):
+        self.ready = False
+        self.id = id
+        self.win = win
+>>>>>>> Stashed changes
         self._init()
         self.win = win
         
@@ -47,20 +67,34 @@ class Game:
             if skipped:
                 self.board.remove(skipped)
             self.change_turn()
+<<<<<<< Updated upstream
         
+=======
+
+>>>>>>> Stashed changes
         else:
             return False
         
         return True
+<<<<<<< Updated upstream
     
     def draw_valid_moves(self,moves):
         for move in moves:
             row, col = move
             pygame.draw.circle(self.win,BLUE,(col* SQUARE_SIZE + SQUARE_SIZE//2,row *SQUARE_SIZE + SQUARE_SIZE//2),15) 
+=======
+
+>>>>>>> Stashed changes
     def change_turn(self):
         self.valid_moves = []
         if self.turn == RED:
             self.turn = WHITE
         else:
             self.turn = RED
+<<<<<<< Updated upstream
           
+=======
+
+    def connected(self):
+        return self.ready
+>>>>>>> Stashed changes

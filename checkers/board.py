@@ -17,6 +17,33 @@ class Board:
     
     def get_piece(self,row,col):
         return self.board[row][col]
+<<<<<<< Updated upstream
+=======
+
+    def updateBoard(self, newBoard):
+        for row in range(len(newBoard)):
+            for col in range(len(newBoard[0])):
+                if col == 1:
+                    self.board[row][col] = Piece(row, col, WHITE)
+                elif col == 2:
+                    self.board[row][col] = Piece(row, col, RED) 
+    
+    def outputBoard(self):
+        array = []
+        for row in range(ROWS):
+            array.append([])
+            for col in range(COLS):
+                if isinstance(self.board[row][col],int) != True:
+                    if self.board[row][col].color == WHITE:
+                        array[row].append(1)
+                elif isinstance(self.board[row][col],int) != True:
+                    if self.board[row][col].color == RED:
+                        array[row].append(2)
+                else:
+                    array[row].append(0)
+                    
+        return array
+>>>>>>> Stashed changes
     
     def create_board(self):
         for row in range(ROWS):
